@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "GraphNN"
+description = "A simple graph neural network implementation using PyTorch"
+version = "1.0.0"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+torch = "^1.12.1"
+torch-scatter = "^2.0.9"
+torch-sparse = "^0.6.10"
+numpy = "^1.22.3"
+scipy = "^1.8.1"
+pytest = "^6.2.5"
+pytest-cov = "^2.12.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+pytest-cov = "^2.12.1"
+
+[build-system]
+requires = ["poetry>=0.660"]
+build-backend = "poetry.masonry.api"
+
+[tool.black]
+line_length = 88
+string_normalization = True
+
+[tool.isort]
+multi_line_output = 3
+use_black = True
