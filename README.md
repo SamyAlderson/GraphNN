@@ -1,68 +1,73 @@
 # GraphNN
-A simple graph neural network implementation using PyTorch
+A simple graph neural network implementation using PyTorch for scalable data analysis
 
-## What and Why
-GraphNN is a basic implementation of a graph neural network using PyTorch. It includes a graph data structure, node and edge representations, message passing and aggregation, and a scalable and efficient training loop.
+## What it does
+GraphNN is a lightweight PyTorch library for building graph neural networks (GNNs). It provides a basic implementation of graph data structures, node and edge representations, message passing and aggregation, and an efficient training loop. This library is useful for data scientists who want to explore GNNs in a simple and flexible way.
 
-## Install
-To install GraphNN, run the following command:
+## Installation
 ```bash
-pip install -r requirements.txt
-```
-Alternatively, you can build and install the project from source using the following command:
-```bash
-pip install .
+pip install graphnn
 ```
 ## Usage
-To use GraphNN, simply run the main entry point:
-```bash
-python src/main.py
-```
-This will launch a simple training loop that demonstrates the usage of the graph neural network.
+```python
+from graphnn import Graph, Node, Edge
+from torch import nn
 
-## Build from Source
-To build GraphNN from source, run the following command:
+# Create a sample graph
+g = Graph()
+n1 = Node(1)
+n2 = Node(2)
+e1 = Edge(n1, n2, weight=0.5)
+g.add_node(n1)
+g.add_node(n2)
+g.add_edge(e1)
+
+# Define a GNN model
+class MyModel(nn.Module):
+    def __init__(self):
+        super(MyModel, self).__init__()
+        self.fc = nn.Linear(2, 2)
+
+    def forward(self, x):
+        return self.fc(x)
+
+# Train the model
+model = MyModel()
+criterion = nn.MSELoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
+for epoch in range(100):
+    optimizer.zero_grad()
+    outputs = model(n1, n2)
+    loss = criterion(outputs, torch.tensor([1, 2]))
+    loss.backward()
+    optimizer.step()
+```
+## Building from source
 ```bash
+git clone https://github.com/SamyAlderson/GraphNN.git
+cd GraphNN
 pip install -r requirements.txt
 python setup.py install
 ```
-This will build the project and install it on your system.
-
-## Project Structure
-The project is structured as follows:
-
-* `src/`: contains the source code for the project
-	+ `main.py`: main entry point
-	+ `graph.py`: graph and node implementations
-	+ `utils.py`: utility functions
-* `tests/`: contains unit tests for the project
-	+ `test_graph.py`: unit tests for graph module
-	+ `test_utils.py`: unit tests for utility functions
-* `setup.py`: build and installation script
-* `requirements.txt`: list of dependencies required by the project
+## Running tests
+```bash
+python -m unittest discover
+```
+## Project structure
+- `graphnn/__init__.py`: Module initialization and imports
+- `graphnn/graph.py`: Graph data structure implementation
+- `graphnn/node.py`: Node representation and utilities
+- `graphnn/edge.py`: Edge representation and utilities
+- `graphnn/model.py`: GNN model definition and training loop
+- `graphnn/utils.py`: Various utility functions
+- `tests/test_graphnn.py`: Unit tests for the library
+- `setup.py`: Build and installation script
 
 ## License
-GraphNN is released under the MIT License.
+Copyright (c) 2026 SamyAlderson
 
-## Dependencies
-GraphNN depends on the following packages:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-* `torch`
-* `torch-scatter`
-* `torch-sparse`
-* `numpy`
-* `scipy`
-* `pytest`
-* `pytest-cov`
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-## Contributing
-Contributions are welcome! Please see the CONTRIBUTING.md file for details.
-
-## Architecture
-See ARCHITECTURE.md for a high-level overview of the project architecture.
-
-## Tests
-GraphNN includes unit tests for the graph module and utility functions. To run the tests, use the following command:
-```bash
-pytest
-```
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
