@@ -1,37 +1,17 @@
 # .gitignore
 
-# ignore ruff cache
-.cache/ruff
+# ignore node_modules and yarn.lock
+node_modules/
+yarn.lock
 
-# ignore ruff log
-.cache/ruff.log
+# ignore pycache
+__pycache__/
+
+# ignore ruff cache
+.ruffcache/
 
 # ignore ruff config
 .ruffconfig
 
-# ignore ruff cache for specific tool
-.cache/ruff/flake8.cache
-
-# ignore node_modules
-node_modules/
-
-# ignore IDE files
-.idea/
-.vscode/
-
-# ignore other IDE files
-*.iml
-*.ipr
-*.iws
-
-# ignore other project files
-*.pyc
-*.pyo
-*.egg-info
-*.dist-info
-__pycache__/
-
-# ignore other IDE files
-*.class
-*.swp
-*.swo
+# ignore venv
+venv/
