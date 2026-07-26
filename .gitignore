@@ -1,15 +1,37 @@
-__pycache__/
-*.pyc
-.pytest_cache/
-.env
-*.egg-info/
-dist/
-build/
-.venv/
+# .gitignore
+
+# ignore ruff cache
+.cache/ruff
+
+# ignore ruff log
+.cache/ruff.log
+
+# ignore ruff config
+.ruffconfig
+
+# ignore ruff cache for specific tool
+.cache/ruff/flake8.cache
+
+# ignore node_modules
 node_modules/
-target/
-bin/
-obj/
-*.o
-*.so
-*.dylib/
+
+# ignore IDE files
+.idea/
+.vscode/
+
+# ignore other IDE files
+*.iml
+*.ipr
+*.iws
+
+# ignore other project files
+*.pyc
+*.pyo
+*.egg-info
+*.dist-info
+__pycache__/
+
+# ignore other IDE files
+*.class
+*.swp
+*.swo
