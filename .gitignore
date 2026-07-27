@@ -1,17 +1,16 @@
 # .gitignore
 
-# ignore node_modules and yarn.lock
-node_modules/
-yarn.lock
-
-# ignore pycache
-__pycache__/
-
-# ignore ruff cache
-.ruffcache/
-
-# ignore ruff config
-.ruffconfig
-
-# ignore venv
+# Ignore virtual environment
 venv/
+
+# Ignore build and dist directories
+build/
+dist/
+
+# Ignore IDE metadata
+.idea/
+.vscode/
+
+# Ignore Ruff configuration
+.ruffconfig
+.ruffignore
