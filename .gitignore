@@ -1,32 +1,18 @@
 # .gitignore
 
-# ignore virtual environment
-venv/
-
-# ignore node_modules
-node_modules/
-
-# ignore build artifacts
+# Ignore build and cache files
 build/
+cache/
 
-# ignore ruff cache
-.ruffcache/
-
-# ignore ruff config
-.ruffconfig
-
-# ignore ruff cache
-.ruffcache/
-
-# ignore IDE files
+# Ignore IDE files
 .idea/
 .vscode/
 
-# ignore other IDE files
-*.iml
+# Ignore node_modules
+node_modules/
+
+# Ignore pyc files
 *.pyc
-*.pyo
-*.egg-info
-*.so
-*.dll
-*.exe
+
+# Ignore ruff cache
+.ruff_cache/
